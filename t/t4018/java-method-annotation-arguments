@@ -1,0 +1,9 @@
+class MyExample {
+    @SuppressWarnings({"unchecked", "rawtypes"}) public String foo(String RIGHT) {
+        someMethodCall();
+        someOtherMethod()
+            .doThat();
+        // Whatever...
+        return ChangeMe;
+    }
+}

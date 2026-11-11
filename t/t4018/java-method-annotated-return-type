@@ -1,0 +1,9 @@
+class MyExample {
+    public @Nullable String foo(String RIGHT) {
+        someMethodCall();
+        someOtherMethod()
+            .doThat();
+        // Whatever...
+        return ChangeMe;
+    }
+}

@@ -1,0 +1,9 @@
+class MyExample {
+    public void foo(String RIGHT) {
+        /* See
+           [1] Knuth, The Art (1997)
+           for details. */
+        // Whatever...
+        return ChangeMe;
+    }
+}

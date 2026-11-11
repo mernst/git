@@ -1,0 +1,9 @@
+class MyExample {
+    @Override public String foo(String RIGHT) {
+        someMethodCall();
+        someOtherMethod()
+            .doThat();
+        // Whatever...
+        return ChangeMe;
+    }
+}

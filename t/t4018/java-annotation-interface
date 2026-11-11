@@ -1,0 +1,6 @@
+@Retention(RetentionPolicy.RUNTIME) public @interface RIGHT {
+    int ONE = 1;
+    int TWO = 2;
+    int THREE = 3;
+    String ChangeMe();
+}

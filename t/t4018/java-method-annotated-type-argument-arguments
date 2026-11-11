@@ -1,0 +1,9 @@
+class MyExample {
+    public Map<@A(value = "x") String, Integer> foo(String RIGHT) {
+        someMethodCall();
+        someOtherMethod()
+            .doThat();
+        // Whatever...
+        return ChangeMe;
+    }
+}

@@ -1,0 +1,12 @@
+class MyExample {
+    public void foo(String RIGHT) {
+        @SuppressWarnings("unchecked") List<String> list = (List<String>) bar(
+            baz);
+        @Nullable String s = qux(
+            baz);
+        String @Nullable [] a = quux(
+            baz);
+        // Whatever...
+        return ChangeMe;
+    }
+}

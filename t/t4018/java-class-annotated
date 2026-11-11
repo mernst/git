@@ -1,0 +1,6 @@
+@Deprecated public final class RIGHT {
+    static int ONE;
+    static int TWO;
+    static int THREE;
+    private static int ChangeMe;
+}

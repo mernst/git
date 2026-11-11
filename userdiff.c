@@ -34,6 +34,14 @@ static int drivers_alloc;
 }
 
 /*
+ * Matches a Java annotation, such as @Nullable or
+ * @SuppressWarnings("unchecked").  Its arguments can contain one level of
+ * nested parentheses, as in @PreAuthorize("hasRole('ADMIN')").
+ */
+#define JAVA_ANNOTATION \
+	"@[A-Za-z_][A-Za-z_0-9.]*(\\(([^()]|\\([^()]*\\))*\\))?"
+
+/*
  * Built-in drivers for various languages, sorted by their names
  * (except that the "default" is left at the end).
  *
@@ -230,11 +238,23 @@ PATTERNS("java",
 	 /* be the prefix of a longer identifier, such as "double" */
 	 "!^[ \t]*(catch|do|for|if|instanceof|new|return|switch|throw|while)"
 	 "([^A-Za-z_0-9$]|$)\n"
-	 /* Class, enum, interface, and record declarations */
-	 "^[ \t]*(([a-z-]+[ \t]+)*(class|enum|interface|record)[ \t]+.*)$\n"
+	 /* Class, enum, interface, annotation interface, and record */
+	 /* declarations, possibly with annotations among the modifiers */
+	 "^[ \t]*((([a-z-]+|" JAVA_ANNOTATION ")[ \t]+)*"
+	 "(class|enum|@?interface|record)[ \t]+.*)$\n"
+	 /* An array dimension, such as the [] in String @Nullable [] foo(), */
+	 /* cannot start a method definition */
+	 "!^[ \t]*\\[\n"
 	 /* Method definitions; note that constructor signatures are not */
 	 /* matched because they are indistinguishable from method calls. */
-	 "^[ \t]*(([A-Za-z_<>&][][?&<>.,A-Za-z_0-9]*[ \t]+)+[A-Za-z_][A-Za-z_0-9]*[ \t]*\\([^;]*)$",
+	 /* Each word before the method name is a modifier, a type, or an */
+	 /* annotation such as @Nullable or @SuppressWarnings("unchecked"). */
+	 /* A word can contain annotations, as in List<@Nullable String>, */
+	 /* or be an array dimension, as in String @Nullable [] foo(). */
+	 "^[ \t]*(("
+	 "([A-Za-z_<>&[]|" JAVA_ANNOTATION ")"
+	 "([][?&<>.,A-Za-z_0-9]|" JAVA_ANNOTATION ")*"
+	 "[ \t]+)+[A-Za-z_][A-Za-z_0-9]*[ \t]*\\([^;]*)$",
 	 /* -- */
 	 "[a-zA-Z_][a-zA-Z0-9_]*"
 	 "|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
@@ -382,6 +402,7 @@ PATTERNS("tex", "^(\\\\((sub)*section|chapter|part)\\*{0,1}\\{.*)$",
 };
 #undef PATTERNS
 #undef IPATTERN
+#undef JAVA_ANNOTATION
 
 static struct userdiff_driver driver_true = {
 	.name = "diff=true",

@@ -1,0 +1,9 @@
+class MyExample {
+    @PreAuthorize("hasRole('ADMIN')") @A(x = (1)) public void foo(String RIGHT) {
+        someMethodCall();
+        someOtherMethod()
+            .doThat();
+        // Whatever...
+        return ChangeMe;
+    }
+}
