@@ -1,0 +1,10 @@
+int RIGHT(int x)
+{
+	if (x)
+		return foo(
+			x);
+	else bar(
+		x);
+	/* Whatever... */
+	return ChangeMe;
+}

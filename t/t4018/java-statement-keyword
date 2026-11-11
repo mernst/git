@@ -1,0 +1,12 @@
+class MyExample {
+    public void foo(String RIGHT) {
+        throw new Bar(
+            baz);
+        return qux(
+            baz);
+        new Quux(
+            baz);
+        // Whatever...
+        return ChangeMe;
+    }
+}

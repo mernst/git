@@ -226,7 +226,10 @@ PATTERNS("ini",
 	 /* -- */
 	 "[^ \t]+"),
 PATTERNS("java",
-	 "!^[ \t]*(catch|do|for|if|instanceof|new|return|switch|throw|while)\n"
+	 /* Statements that can look like methods; each keyword must not */
+	 /* be the prefix of a longer identifier, such as "double" */
+	 "!^[ \t]*(catch|do|for|if|instanceof|new|return|switch|throw|while)"
+	 "([^A-Za-z_0-9$]|$)\n"
 	 /* Class, enum, interface, and record declarations */
 	 "^[ \t]*(([a-z-]+[ \t]+)*(class|enum|interface|record)[ \t]+.*)$\n"
 	 /* Method definitions; note that constructor signatures are not */
@@ -263,8 +266,9 @@ PATTERNS("matlab",
 	 /* -- */
 	 "[a-zA-Z_][a-zA-Z0-9_]*|[-+0-9.e]+|[=~<>]=|\\.[*/\\^']|\\|\\||&&"),
 PATTERNS("objc",
-	 /* Negate C statements that can look like functions */
-	 "!^[ \t]*(do|for|if|else|return|switch|while)\n"
+	 /* Negate C statements that can look like functions; each keyword */
+	 /* must not be the prefix of a longer identifier, such as "double" */
+	 "!^[ \t]*(do|for|if|else|return|switch|while)([^A-Za-z_0-9]|$)\n"
 	 /* Objective-C methods */
 	 "^[ \t]*([-+][ \t]*\\([ \t]*[A-Za-z_][A-Za-z_0-9* \t]*\\)[ \t]*[A-Za-z_].*)$\n"
 	 /* C functions */
