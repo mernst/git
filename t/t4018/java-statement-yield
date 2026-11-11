@@ -1,0 +1,12 @@
+class MyExample {
+    public int foo(int RIGHT) {
+        int y = switch (x) {
+            default -> {
+                yield bar(
+                    x);
+            }
+        };
+        // Whatever...
+        return ChangeMe;
+    }
+}

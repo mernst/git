@@ -1,0 +1,8 @@
+class MyExample {
+    public void foo(int RIGHT) {
+        assert check(
+            x);
+        // Whatever...
+        return ChangeMe;
+    }
+}

@@ -1,0 +1,17 @@
+class MyExample {
+    public void foo(String RIGHT)
+    {
+        if (x)
+        {
+            bar();
+        }
+        else if (y)
+        {
+            baz();
+        }
+        else qux(
+            y);
+        // Whatever...
+        return ChangeMe;
+    }
+}

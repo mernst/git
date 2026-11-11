@@ -236,7 +236,8 @@ PATTERNS("ini",
 PATTERNS("java",
 	 /* Statements that can look like methods; each keyword must not */
 	 /* be the prefix of a longer identifier, such as "double" */
-	 "!^[ \t]*(catch|do|for|if|instanceof|new|return|switch|throw|while)"
+	 "!^[ \t]*(assert|case|catch|do|else|for|if|instanceof|new|return|switch|throw"
+	 "|while|yield)"
 	 "([^A-Za-z_0-9$]|$)\n"
 	 /* Class, enum, interface, annotation interface, and record */
 	 /* declarations, possibly with annotations among the modifiers */

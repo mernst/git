@@ -1,0 +1,12 @@
+class MyExample {
+    public void foo(Object RIGHT) {
+        switch (o) {
+            case Point(int x, int y) -> {
+                bar(x);
+                baz(y);
+                // Whatever...
+                ChangeMe();
+            }
+        }
+    }
+}
